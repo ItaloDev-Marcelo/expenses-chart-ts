@@ -8,6 +8,7 @@
   --color-Neutral-Brown-950:hsl(25, 47%, 15%);
   --color-Neutral-Brown-400: hsl(28, 10%, 53%);
   --color-Neutral-red-100: hsl(26, 66%, 93%) ;
+  --breakpoint-tb: 60rem;
 }
 
 body {
