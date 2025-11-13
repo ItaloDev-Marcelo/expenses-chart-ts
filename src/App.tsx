@@ -1,8 +1,10 @@
-
+import BalanceHeader from './balance/BalanceHeader'
 function App() {
  
   return (
-    <h1>Ola</h1>
+     <div className='flex flex-col items-center justify-center mt-2.5 md:mt-[5rem] xl:mt-[7rem]'>
+       <BalanceHeader/>
+     </div>
   )
 }
 
