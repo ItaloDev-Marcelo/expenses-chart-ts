@@ -1,0 +1,54 @@
+
+  "overrides": {
+    "vite": "^5.4.0"
+  }
+
+
+Esse erro acontece porque você está usando um override (“overrides”) no package.json para forçar uma versão do vite, mas o projeto também tem uma dependência direta de vite com outra versão, e o npm está bloqueando o conflito.
+
+Ou seja:
+
+Você tem vite como dependência direta (ex: "vite": "5.x" ou "vite": "^6.0.0").
+
+E também tem algo como:
+
+"overrides": {
+  "vite": "npm:rolldown-vite@7.2.2"
+}
+
+
+➡️ O npm não permite sobrescrever uma dependência direta com outra fonte (npm alias, pacote substituto).
+
+✅ COMO CORRIGIR
+✔ Solução 1 — Remover o override do vite (RECOMENDADO)
+
+No seu package.json, remova:
+
+"overrides": {
+  "vite": "npm:rolldown-vite@7.2.2"
+}
+
+
+Depois rode:
+
+npm install
+
+
+E faça o deploy novamente no Vercel.
+
+✔ Solução 2 — Remover vite como dependência direta
+
+Se você realmente quer usar rolldown-vite@7.2.2 no lugar do Vite normal, remova o vite direto:
+
+1. Remova vite do package.json:
+npm uninstall vite
+
+2. No package.json deixe apenas:
+"overrides": {
+  "vite": "npm:rolldown-vite@7.2.2"
+}
+
+
+E então:
+
+npm install
